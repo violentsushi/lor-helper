@@ -1,2 +1,16 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
+
+@layer base {
+    a {
+        color: var(--color-blue-500)
+    }
+}
+
+.vocab, .keyword {
+	color: #e9c755;
+}
+
+.associatedcard {
+    color: #469aeb;
+}

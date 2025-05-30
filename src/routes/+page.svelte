@@ -20,7 +20,7 @@
     <h2>Powers</h2>
     {#each powers as power}
         <div class="bg-gray-600 m-1 rounded p-1" id={power.powerCode}>
-            <img src={`./img/powers/${power.powerCode}-full.png`} alt={power.name} width="400"/>
+            <img src={power.assetFullAbsolutePath} alt={power.name} width="400"/>
             <a href={`#${power.powerCode}`}><h3>{power.name}</h3></a>
             <p>{power.rarity}</p>
             <p>{@html transformDescription(power.description, power.name)}</p>
@@ -32,7 +32,7 @@
     <h2>Relics</h2>
     {#each relics as relic}
         <div class="bg-gray-600 m-1 rounded p-1" id={relic.relicCode}>
-            <img src={`./img/relics/${relic.relicCode}-full.png`} alt={relic.name} width="400"/>
+            <img src={relic.assetFullAbsolutePath} alt={relic.name} width="400"/>
             <a href={`#${relic.relicCode}`}><h3>{relic.name}</h3></a>
             <p>{relic.rarity}</p>
             <p>{@html transformDescription(relic.description, relic.name)}</p>
@@ -44,7 +44,7 @@
     <h2>Items</h2>
     {#each items as item}
         <div class="bg-gray-600 m-1 rounded p-1" id={item.itemCode}>
-            <img src={`./img/items/${item.itemCode}-full.png`} alt={item.name} width="400"/>
+            <img src={item.assetFullAbsolutePath} alt={item.name} width="400"/>
             <a href={`#${item.itemCode}`}><h3>{item.name}</h3></a>
             <p>{item.rarity}</p>
             <p>{@html transformDescription(item.description, item.name)}</p>

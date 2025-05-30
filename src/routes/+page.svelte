@@ -2,11 +2,11 @@
     import type { PageProps } from "./$types";
     import {transformDescription} from '$lib/utils'
 
-    let { data }: PageProps = $props();
+    const { data }: PageProps = $props();
 
-    let powers = data.powers.sort((a, b) => a.name.localeCompare(b.name))
-    let relics = data.relics.sort((a, b) => a.name.localeCompare(b.name))
-    let items = data.items.sort((a, b) => a.name.localeCompare(b.name))
+    const powers = data.powers.sort((a, b) => a.name.localeCompare(b.name))
+    const relics = data.relics.sort((a, b) => a.name.localeCompare(b.name))
+    const items = data.items.sort((a, b) => a.name.localeCompare(b.name))
 </script>
 
 <div id="contents">

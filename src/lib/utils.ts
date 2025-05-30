@@ -1,7 +1,5 @@
 export const transformDescription = (description: string, name?: string) => 
-    description.replaceAll(/<link=keyword.([A-Za-z ]+)><sprite name=(\w+)>([A-Za-z0-9<>=/ ]+)<\/link>/g, (_substring, _keyword: string, iconName: string, text: string) =>
-        `<span><sprite name=${iconName}>${text}</span>`
-    ).replaceAll(/<style=(\w+)>([A-Za-z0-9:' ]+)<\/style>/g, (_substring, style: string, text: string) => {
+    description.replaceAll(/<style=(\w+)>([A-Za-z0-9:' ]+)<\/style>/g, (_substring, style: string, text: string) => {
         if (text === 'CardRef') {
             style = 'AssociatedCard'
             switch(name) {
@@ -16,8 +14,65 @@ export const transformDescription = (description: string, name?: string) =>
             }
         }
 
+        let card = text;
+        switch (text) {
+            case "Coastal Defenders":
+                card = "Coastal Defender"
+                break;
+            case "Citybreakers":
+                card = "Citybreaker"
+                break;
+            case "Poison Puffcaps":
+                card = "Poison Puffcap"
+                break;
+            case "Funsmiths":
+                card = "Funsmith"
+                break;
+            case "Time Bombs":
+                card = "Time Bomb"
+                break;
+            case "Chimes":
+                card = "Chime"
+                break;
+            case "Decimates":
+                card = "Decimate"
+                break;
+            case "Powder Kegs":
+                card = "Powder Keg"
+                break;
+            case "Ghastly Bands":
+                card = "Ghastly Band"
+                break;
+            case "Spiderlings":
+                card = "Spiderling"
+                break;
+            case "Arachnoid Horrors":
+                card = "Arachnoid Horror"
+                break;
+            case "Nightmares":
+                card = "Nightmare"
+                break;
+            case "Vanguard Lookouts":
+                card = "Vanguard Lookout (Card)"
+                break;
+            case "Deaths From Below":
+                card = "Death From Below"
+                break;
+            case "Warning Shots":
+                card = "Warning Shot"
+                break;
+            case "Flashbomb Traps":
+                card = "Flashbomb Trap"
+                break;
+            case "Hex Core Upgrades":
+                card = "Hex Core Upgrade"
+                break;
+            default:
+                break;
+        }
+
         if (style === "AssociatedCard") {
-            return `<a href="https://wiki.leagueoflegends.com/en-us/LoR:${text.replaceAll(" ", "_")}" class="${style.toLowerCase()}" target="_blank">${text}</a>`
+            return `<a href="https://wiki.leagueoflegends.com/en-us/LoR:${card.replaceAll(" ", "_")}" class="${style.toLowerCase()}" target="_blank">${text}</a>`
         }
         
         return `<span class="${style.toLowerCase()}">${text}</span>`

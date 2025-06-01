@@ -76,7 +76,7 @@ export const transformDescription = (description: string, name?: string) =>
         }
 
         if (style === "AssociatedCard") {
-            return `<a href="https://wiki.leagueoflegends.com/en-us/LoR:${card.replaceAll(" ", "_")}" class="${style.toLowerCase()}" target="_blank">${text}</a>`
+            return `<a href="https://wiki.leagueoflegends.com/en-us/LoR:${card.replaceAll(" ", "_")}" class="underline" target="_blank">${text}</a>`
         }
         
         return `<span class="${style.toLowerCase()}">${text}</span>`
@@ -146,7 +146,7 @@ export const transformCell = (cell?: string) => {
 
     const doc = parser.parse(cell)
 
-    let span = `<span style="white-space: pre-line;">`
+    let span = `<span class="whitespace-pre-line">`
     if (!doc.r) {
         span += doc.t
     }

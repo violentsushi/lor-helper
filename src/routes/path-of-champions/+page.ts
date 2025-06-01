@@ -1,18 +1,21 @@
+import { downloadDataDragon, transformCell } from '$lib';
 import type { PageLoad } from './$types'
-import * as xlsx from 'xlsx'
+import xlsx from 'xlsx'
+import championAssocations from '$lib/data/path-of-champions.json'
+import type { Card } from '$lib/types';
 
 interface SupportingChampion {
     name: string;
     tier: string;
     note: boolean;
-    star_power_requirements: number[]
+    starPowerRequirements: number[]
 }
 
 interface PassivePower {
     name: string;
     tier: string;
     note: boolean;
-    star_power_requirements: number[]
+    starPowerRequirements: number[]
     rarity?: string;
 }
 
@@ -20,7 +23,7 @@ interface Relic {
     name: string;
     tier: string;
     note: boolean;
-    star_power_requirements: number[]
+    starPowerRequirements: number[]
     rarity: string;
 }
 
@@ -28,35 +31,33 @@ interface Item {
     name: string;
     tier: string;
     note: boolean;
-    star_power_requirements: number[]
+    starPowerRequirements: number[]
     rarity: string;
-}
-
-interface StarPower {
-    name: string;
-    description: string;
 }
 
 interface Champion {
     name: string;
-    short_summary?: string;
+    shortSummary?: string;
     playstyle: string;
     difficulty: string;
     speed?: string;
-    best_supporting_champions: SupportingChampion[];
-    best_passive_powers: PassivePower[];
-    best_relics: Relic[];
-    best_items: Item[];
-    // star_power_1: StarPower;
-    // star_power_2: StarPower;
-    // star_power_3: StarPower;
-    // star_power_4?: StarPower;
-    // star_power_5?: StarPower;
-    // star_power_6?: StarPower;
+    bestSupportingChampions: string;
+    bestPassivePowers: string;
+    bestRelics: string;
+    bestItems: string;
+    starPower1: string;
+    starPower2: string;
+    starPower3: string;
+    starPower4?: string;
+    starPower5?: string;
+    starPower6?: string;
+    cards: Card[];
 }
 
 export const load: PageLoad = async (event) => {
-    const data = await event.fetch("/data/LOR Path of Champions.xlsx").then(response => response.arrayBuffer())
+    const {globals, items, powers, relics, cards} = await downloadDataDragon(event.fetch);
+
+    const data = await event.fetch("https://docs.google.com/spreadsheets/d/1FePMz4o3tbiWcz0nHZYu0aAHknbIfb9anWfQCVtvtKk/export?format=xlsx&gid=1877830190").then(response => response.arrayBuffer())
     
     const workSheets = xlsx.read(data, {
         sheets: "Champions"
@@ -68,21 +69,36 @@ export const load: PageLoad = async (event) => {
     
     for (const rowNumber of rowNumbers) {
         // skip the header row
-        // if no star_power_1, meaning a row that not a champion, then skip
+        // skip if no star_power_1, meaning that row is not a champion
         if (rowNumber === '1' || championsWorkSheet[`L${rowNumber}`] === undefined) {
             continue;
         }
 
+        const championName: string = championsWorkSheet[`A${rowNumber}`]?.v;
+        const championAssocation = championAssocations.find(item => item.name.toLowerCase() === championName.toLowerCase());
+        const championCards: Card[] = [cards.find(item => item.cardCode === championAssocation?.cardCode) as Card];
+        
+        for (const associatedCardRef of championCards[0].associatedCardRefs) {
+            championCards.push(cards.find(item => item.cardCode === associatedCardRef) as Card)
+        }
+
         champions.push({
-            name: championsWorkSheet[`A${rowNumber}`]?.v,
-            short_summary: championsWorkSheet[`D${rowNumber}`]?.v,
+            name: championName,
+            shortSummary: championsWorkSheet[`D${rowNumber}`]?.v,
             playstyle: championsWorkSheet[`E${rowNumber}`]?.v,
             difficulty: championsWorkSheet[`F${rowNumber}`]?.v,
             speed: championsWorkSheet[`G${rowNumber}`]?.v,
-            best_supporting_champions: [],
-            best_passive_powers: [],
-            best_relics: [],
-            best_items: [],
+            bestSupportingChampions: transformCell(championsWorkSheet[`H${rowNumber}`]?.r),
+            bestPassivePowers: transformCell(championsWorkSheet[`I${rowNumber}`]?.r),
+            bestRelics: transformCell(championsWorkSheet[`J${rowNumber}`]?.r),
+            bestItems: transformCell(championsWorkSheet[`K${rowNumber}`]?.r),
+            starPower1: transformCell(championsWorkSheet[`L${rowNumber}`]?.r),
+            starPower2: transformCell(championsWorkSheet[`M${rowNumber}`]?.r),
+            starPower3: transformCell(championsWorkSheet[`N${rowNumber}`]?.r),
+            starPower4: transformCell(championsWorkSheet[`O${rowNumber}`]?.r),
+            starPower5: transformCell(championsWorkSheet[`P${rowNumber}`]?.r),
+            starPower6: transformCell(championsWorkSheet[`Q${rowNumber}`]?.r),
+            cards: championCards
         })
     }
 

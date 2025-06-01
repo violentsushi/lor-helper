@@ -1,0 +1,286 @@
+[
+  {
+    "name": "Aatrox",
+    "cardCode": "06RU026"
+  },
+  {
+    "name": "Ahri",
+    "cardCode": "05IO004"
+  },
+  {
+    "name": "Akshan",
+    "cardCode": "04SH130"
+  },
+  {
+    "name": "Ambessa",
+    "cardCode": "98NX003"
+  },
+  {
+    "name": "Annie",
+    "cardCode": "06NX012"
+  },
+  {
+    "name": "Ashe",
+    "cardCode": "01FR038"
+  },
+  {
+    "name": "Aurelion Sol",
+    "cardCode": "03MT087"
+  },
+  {
+    "name": "Bard",
+    "cardCode": "06RU001"
+  },
+  {
+    "name": "Caitlyn",
+    "cardCode": "05PZ006"
+  },
+  {
+    "name": "Darius",
+    "cardCode": "01NX038"
+  },
+  {
+    "name": "Diana",
+    "cardCode": "03MT056"
+  },
+  {
+    "name": "Ekko",
+    "cardCode": "04PZ001"
+  },
+  {
+    "name": "Elder Dragon",
+    "cardCode": "08RU014"
+  },
+  {
+    "name": "Elise",
+    "cardCode": "01SI053"
+  },
+  {
+    "name": "Evelynn",
+    "cardCode": "06RU025"
+  },
+  {
+    "name": "Fiddlesticks",
+    "cardCode": "98RU004"
+  },
+  {
+    "name": "Garen",
+    "cardCode": "01DE012"
+  },
+  {
+    "name": "Gnar",
+    "cardCode": "05BC161"
+  },
+  {
+    "name": "Gwen",
+    "cardCode": "06SI012"
+  },
+  {
+    "name": "Heimerdinger",
+    "cardCode": "01PZ056"
+  },
+  {
+    "name": "Illaoi",
+    "cardCode": "06BW006"
+  },
+  {
+    "name": "Jack",
+    "cardCode": "07BW002"
+  },
+  {
+    "name": "Janna",
+    "cardCode": "08PZ001"
+  },
+  {
+    "name": "Jax",
+    "cardCode": "06RU008"
+  },
+  {
+    "name": "Jayce",
+    "cardCode": "05PZ022"
+  },
+  {
+    "name": "Jhin",
+    "cardCode": "06RU002"
+  },
+  {
+    "name": "Jinx",
+    "cardCode": "01PZ040"
+  },
+  {
+    "name": "Kai'Sa",
+    "cardCode": "06SH009"
+  },
+  {
+    "name": "Kayle",
+    "cardCode": "06MT008"
+  },
+  {
+    "name": "Kayn",
+    "cardCode": "06RU005"
+  },
+  {
+    "name": "Kindred",
+    "cardCode": "04SI005"
+  },
+  {
+    "name": "LeBlanc",
+    "cardCode": "04NX004"
+  },
+  {
+    "name": "Lee Sin",
+    "cardCode": "02IO006"
+  },
+  {
+    "name": "Leona",
+    "cardCode": "03MT054"
+  },
+  {
+    "name": "Lillia",
+    "cardCode": "09IO052"
+  },
+  {
+    "name": "Lux",
+    "cardCode": "01DE042"
+  },
+  {
+    "name": "Lux: Illuminated",
+    "cardCode": "09DE034"
+  },
+  {
+    "name": "Master Yi",
+    "cardCode": "06IO008"
+  },
+  {
+    "name": "Miss Fortune",
+    "cardCode": "02BW022"
+  },
+  {
+    "name": "Mordekaiser",
+    "cardCode": "08SI042"
+  },
+  {
+    "name": "Morgana",
+    "cardCode": "08MT003"
+  },
+  {
+    "name": "Nami",
+    "cardCode": "05BW005"
+  },
+  {
+    "name": "Nasus",
+    "cardCode": "04SH047"
+  },
+  {
+    "name": "Nautilus",
+    "cardCode": "02BW053"
+  },
+  {
+    "name": "Neeko",
+    "cardCode": "07RU012"
+  },
+  {
+    "name": "Nidalee",
+    "cardCode": "07SH013"
+  },
+  {
+    "name": "Nilah",
+    "cardCode": "08BW008"
+  },
+  {
+    "name": "Norra",
+    "cardCode": "06BC015"
+  },
+  {
+    "name": "Ornn",
+    "cardCode": "06FR011"
+  },
+  {
+    "name": "Poro King",
+    "cardCode": "07RU015"
+  },
+  {
+    "name": "Pyke",
+    "cardCode": "04BW005"
+  },
+  {
+    "name": "Samira",
+    "cardCode": "07NX007"
+  },
+  {
+    "name": "Ryze",
+    "cardCode": "06RU006"
+  },
+  {
+    "name": "Sett",
+    "cardCode": "07IO011"
+  },
+  {
+    "name": "Swain",
+    "cardCode": "02NX007"
+  },
+  {
+    "name": "Tahm Kench",
+    "cardCode": "03BW004"
+  },
+  {
+    "name": "Taliyah",
+    "cardCode": "04SH073"
+  },
+  {
+    "name": "Teemo",
+    "cardCode": "01PZ008"
+  },
+  {
+    "name": "Thresh",
+    "cardCode": "01SI052"
+  },
+  {
+    "name": "Tryndamere",
+    "cardCode": "01FR039"
+  },
+  {
+    "name": "Varus",
+    "cardCode": "06RU009"
+  },
+  {
+    "name": "Vayne",
+    "cardCode": "06DE021"
+  },
+  {
+    "name": "Veigar",
+    "cardCode": "05BC093"
+  },
+  {
+    "name": "Vex",
+    "cardCode": "09BC001"
+  },
+  {
+    "name": "Vi",
+    "cardCode": "02PZ008"
+  },
+  {
+    "name": "Viego",
+    "cardCode": "04SI055"
+  },
+  {
+    "name": "Viktor",
+    "cardCode": "03PZ003"
+  },
+  {
+    "name": "Volibear",
+    "cardCode": "08FR001"
+  },
+  {
+    "name": "Warwick",
+    "cardCode": "98PZ001"
+  },
+  {
+    "name": "Yasuo",
+    "cardCode": "01IO015"
+  },
+  {
+    "name": "Yuumi",
+    "cardCode": "05BC029"
+  }
+]

@@ -1,3 +1,7 @@
+import type { Globals, Items, Powers, Relics, Card } from "./types";
+import sets from '$lib/data/sets.json'
+import { XMLParser } from "fast-xml-parser";
+
 export const transformDescription = (description: string, name?: string) => 
     description.replaceAll(/<style=(\w+)>([A-Za-z0-9:' ]+)<\/style>/g, (_substring, style: string, text: string) => {
         if (text === 'CardRef') {
@@ -128,3 +132,77 @@ export const transformDescription = (description: string, name?: string) =>
 
         return `<image src="${src}" alt="${iconName} icon" width="16" class="mr-1 inline-block mb-1" />`
     })
+
+export const transformCell = (cell?: string) => {
+    if (!cell) {
+        return "";
+    }
+
+    const parser = new XMLParser({
+        ignoreAttributes: false,
+        attributeNamePrefix: "@_",
+        trimValues: false
+    });
+
+    const doc = parser.parse(cell)
+
+    let span = `<span style="white-space: pre-line;">`
+    if (!doc.r) {
+        span += doc.t
+    }
+    else {
+        for (const rItem of doc.r) {
+            let style = "";
+    
+            if (!rItem.rPr) {
+                style += "font-weight: bold;";
+            }
+
+            const rgb: string | undefined = rItem.rPr?.color?.['@_rgb']
+            if (rgb) {
+                style += `color: #${rgb.substring(2, 8)};`;
+            }
+    
+            const bold = rItem.rPr?.b
+            if (bold !== undefined && bold['@_val'] !== "0") {
+                style += "font-weight: bold;";
+            }
+
+            const italic = rItem.rPr?.i
+            if (italic !== undefined && italic['@_val'] !== "0") {
+                style += "font-style: italic;"
+            }
+            
+            span += `<span style="${style}">`
+            if (rItem.t['#text']) {
+                span += rItem.t['#text']
+            }
+            else {
+                span += rItem.t;
+            }
+            span += '</span>'
+        }
+    }
+    span += "</span>"
+
+    return span;
+}
+
+export const downloadDataDragon = async (fetch: (input: RequestInfo, init?: RequestInit) => Promise<Response>) => {
+    const globalsPromise: Promise<Globals> = fetch('https://raw.githubusercontent.com/InFinity54/LoR_DDragon/refs/heads/master/core/data/globals-en_us.json').then(response => response.json());
+    const itemsPromise: Promise<Items> = fetch('https://raw.githubusercontent.com/InFinity54/LoR_DDragon_Adventure/refs/heads/master/data/items-en_us.json').then(response => response.json());
+    const powersPromise: Promise<Powers> = fetch('https://raw.githubusercontent.com/InFinity54/LoR_DDragon_Adventure/refs/heads/master/data/powers-en_us.json').then(response => response.json());
+    const relicsPromise: Promise<Relics> = fetch('https://raw.githubusercontent.com/InFinity54/LoR_DDragon_Adventure/refs/heads/master/data/relics-en_us.json').then(response => response.json());
+    const cardsArrayPromise:Promise<Card[]>[] = sets.map(item => fetch(`https://raw.githubusercontent.com/InFinity54/LoR_DDragon_${item}/refs/heads/master/data/${item}-en_us.json`).then(response => response.json()))
+
+    const [globals, items, powers, relics, ...cardsArray]  = await Promise.all([globalsPromise, itemsPromise, powersPromise, relicsPromise, ...cardsArrayPromise]);
+    const cards = cardsArray.flat();
+
+    return {
+        globals,
+        items,
+        powers,
+        relics,
+        cards
+    }
+}

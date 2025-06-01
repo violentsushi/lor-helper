@@ -58,12 +58,10 @@
                 {@html champion.bestRelics}
             </div>
 
-            {#if champion.bestItems}
-                <div>
-                    <p class="font-bold">Best Items</p>
-                    {@html champion.bestItems}
-                </div>
-            {/if}
+            <div>
+                <p class="font-bold">Best Items</p>
+                {@html champion.bestItems}
+            </div>
         </div>
     </div>
 {/each}

@@ -5,12 +5,15 @@
 	let { children } = $props();
 </script>
 
-<h1>Legends of Runeterra</h1>
+<div class="m-1">
+    <h1 class="font-bold text-xl">Legends of Runeterra</h1>
 
-<div id="links">
-    <h2>Links</h2>
-    <p><a href="{base}/">Home</a></p>
-    <p><a href="{base}/path-of-champions">Path of Champions</a></p>
+    <div id="links">
+        <p><a href="{base}/">Home</a></p>
+        <p><a href="{base}/path-of-champions">Path of Champions</a></p>
+    </div>
+
+    {@render children()}
 </div>
 
-{@render children()}
+<a href="#top" class="fixed bottom-6 right-6 bg-blue-500 text-white p-4 cursor-pointer z-50 rounded hover:bg-blue-700">Top</a>

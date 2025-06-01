@@ -2,6 +2,10 @@
 @plugin '@tailwindcss/forms';
 
 @layer base {
+    body {
+        background-color: var(--color-gray-100);
+    }
+
     a {
         color: var(--color-blue-500)
     }

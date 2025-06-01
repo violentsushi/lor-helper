@@ -10,19 +10,19 @@
 </script>
 
 <div id="contents">
-    <h2>Contents</h2>
+    <h2 class="font-bold">Contents</h2>
     <p><a href="#powers">Powers</a></p>
     <p><a href="#relics">Relics</a></p>
     <p><a href="#items">Items</a></p>
 </div>
 
 <div id="powers">
-    <h2>Powers</h2>
+    <h2 class="font-bold">Powers</h2>
     <div class="grid md:grid-cols-3">
         {#each powers as power}
             <div class="bg-gray-600 m-1 rounded p-1" id={power.powerCode}>
                 <img src={power.assetFullAbsolutePath} alt={power.name} width="400" />
-                <h3><a href={`#${power.powerCode}`}>{power.name}</a></h3>
+                <h3 class="font-bold"><a href={`#${power.powerCode}`}>{power.name}</a></h3>
                 <div class="flex items-center"><img src={`https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${power.rarityRef}_icon.png/100px-LoR_${power.rarityRef}_icon.png`} alt={power.rarity} width="16" class="mr-1" />{power.rarity}</div>
                 <div><span>{@html transformDescription(power.description, power.name)}</span></div>
             </div>
@@ -31,12 +31,12 @@
 </div>
 
 <div id="relics">
-    <h2>Relics</h2>
+    <h2 class="font-bold">Relics</h2>
     <div class="grid md:grid-cols-3">
         {#each relics as relic}
             <div class="bg-gray-600 m-1 rounded p-1" id={relic.relicCode}>
                 <img src={relic.assetFullAbsolutePath} alt={relic.name} width="400"/>
-                <h3><a href={`#${relic.relicCode}`}>{relic.name}</a></h3>
+                <h3 class="font-bold"><a href={`#${relic.relicCode}`}>{relic.name}</a></h3>
                 <div class="flex items-center"><img src={`https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${relic.rarityRef}_icon.png/100px-LoR_${relic.rarityRef}_icon.png`} alt={relic.rarity} width="16" class="mr-1" />{relic.rarity}</div>
                 <div><span>{@html transformDescription(relic.description, relic.name)}</span></div>
             </div>
@@ -45,12 +45,12 @@
 </div>
 
 <div id="items">
-    <h2>Items</h2>
+    <h2 class="font-bold">Items</h2>
     <div class="grid md:grid-cols-3">
         {#each items as item}
             <div class="bg-gray-600 m-1 rounded p-1" id={item.itemCode}>
                 <img src={item.assetFullAbsolutePath} alt={item.name} width="400"/>
-                <h3><a href={`#${item.itemCode}`}>{item.name}</a></h3>
+                <h3 class="font-bold"><a href={`#${item.itemCode}`}>{item.name}</a></h3>
                 <div class="flex items-center"><img src={`https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${item.rarityRef}_icon.png/100px-LoR_${item.rarityRef}_icon.png`} alt={item.rarity} width="16" class="mr-1" />{item.rarity}</div>
                 <div><span>{@html transformDescription(item.description, item.name)}</span></div>
             </div>

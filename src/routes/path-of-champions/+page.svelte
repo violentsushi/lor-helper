@@ -7,20 +7,26 @@
 </script>
 
 <div id="champions">
-    <h2>Champions</h2>
-    {#each champions as champion}
-        <p><a href={`#${champion.name}`}>{champion.name}</a></p>
-    {/each}
+    <h2 class="font-bold">Champions</h2>
+    <div class="grid md:grid-cols-4">
+        {#each champions as champion}
+            <p><a href={`#${champion.name}`}>{champion.name}</a></p>
+        {/each}
+    </div>
 </div>
 
 {#each champions as champion}
     <div class="bg-gray-300 m-1 rounded p-1" id={champion.name}>
-        <h3><a href={`#${champion.name}`} class="mr-1">{champion.name}</a><a href={`https://wiki.leagueoflegends.com/en-us/LoR:${champion.name.replaceAll(' ', '_')}#The_Path_of_Champions`} target="_blank">🔍</a></h3>
-
-        <img src={champion.cards[0].assets[0].gameAbsolutePath} alt={`${champion.cards[0].name} card`} width="200" />
+        <div style="width: 200px;">
+            <a href={`https://wiki.leagueoflegends.com/en-us/LoR:${champion.name.replaceAll(' ', '_')}#The_Path_of_Champions`} target="_blank">
+                <img src={champion.cards[0].assets[0].gameAbsolutePath} alt={`${champion.cards[0].name} card`} width="200" />
+            </a>
+        </div>
         <!-- {#each champion.cards as card}
             <img src={card.assets[0].gameAbsolutePath} alt={`${card.name} card`} width="200" />
         {/each} -->
+
+        <h3 class="font-bold"><a href={`#${champion.name}`} class="mr-1">{champion.name}</a></h3>
 
         <p>{champion.shortSummary}</p>
         <p>Playstyle: {champion.playstyle}</p>

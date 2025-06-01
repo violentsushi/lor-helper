@@ -71,6 +71,12 @@ export const transformDescription = (description: string, name?: string) =>
             case "Hex Core Upgrades":
                 card = "Hex Core Upgrade"
                 break;
+            case "Chronobreaks":
+                card = "Chronobreak"
+                break;
+            case "Golden Narwhals":
+                card = "Golden Narwhal"
+                break;
             default:
                 break;
         }

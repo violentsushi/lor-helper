@@ -6,6 +6,8 @@
     const champions = data.champions.sort((a, b) => a.name.localeCompare(b.name));
 </script>
 
+<p>Data taken from <a href="https://njb.fyi/poc" target="_blank">https://njb.fyi/poc</a></p>
+
 <div id="champions">
     <h2 class="font-bold">Champions</h2>
     <div class="grid md:grid-cols-4">

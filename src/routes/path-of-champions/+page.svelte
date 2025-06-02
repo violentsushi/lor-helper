@@ -28,42 +28,91 @@
             <img src={card.assets[0].gameAbsolutePath} alt={`${card.name} card`} width="200" />
         {/each} -->
 
-        <h3 class="font-bold"><a href={`#${champion.name}`} class="mr-1">{champion.name}</a></h3>
+        <div class="m-2">
+            <h3 class="font-bold"><a href={`#${champion.name}`} class="mr-1">{champion.name}</a></h3>
+    
+            <p>{champion.shortSummary}</p>
 
-        <p>{champion.shortSummary}</p>
-        <p>Playstyle: {champion.playstyle}</p>
-        <p>Difficulty: {champion.difficulty}</p>
-        <p>Speed: {champion.speed}</p>
+            <div class="grid md:grid-cols-3">
+                <p><span class="font-bold">Playstyle</span>: {champion.playstyle}</p>
+                <p><span class="font-bold">Difficulty</span>: {champion.difficulty}</p>
+                <p><span class="font-bold">Speed</span>: {champion.speed}</p>
+            </div>
+        </div>
 
-        <div class="grid md:grid-cols-3 my-1 border-1 m-1 rounded p-1">
+        <fieldset class="grid md:grid-cols-3 border-1 m-1 rounded p-1">
+            <legend class="font-bold">Star Powers</legend>
             <div>{@html champion.starPower1}</div>
             <div>{@html champion.starPower2}</div>
             <div>{@html champion.starPower3}</div>
             <div>{@html champion.starPower4}</div>
             <div>{@html champion.starPower5}</div>
             <div>{@html champion.starPower6}</div>
-        </div>
+        </fieldset>
 
-        <div class="grid md:grid-cols-4 my-1 border-1 m-1 rounded p-1">
-            <div>
-                <p class="font-bold">Best Supporting Champions</p>
+        <div class="grid md:grid-cols-4 border-1 m-1 rounded p-1">
+            <div class="md:border-b-0 border-b-1">
+                <p class="font-bold underline">Best Supporting Champions</p>
                 {@html champion.bestSupportingChampions}
             </div>
 
-            <div>
-                <p class="font-bold">Best Passive Powers</p>
+            <div class="md:border-b-0 border-b-1">
+                <p class="font-bold underline">Best Passive Powers</p>
                 {@html champion.bestPassivePowers}
             </div>
 
-            <div>
-                <p class="font-bold">Best Relics</p>
+            <div class="md:border-b-0 border-b-1">
+                <p class="font-bold underline">Best Relics</p>
                 {@html champion.bestRelics}
             </div>
 
-            <div>
-                <p class="font-bold">Best Items</p>
+            <div class="md:border-b-0">
+                <p class="font-bold underline">Best Items</p>
                 {@html champion.bestItems}
             </div>
         </div>
+
+        {#if champion.generalThoughts}
+            <fieldset class="border-1 m-1 rounded p-1">
+                <legend class="font-bold">General thoughts</legend>
+                {@html champion.generalThoughts}
+            </fieldset>
+        {/if}
+        {#if champion.bestSupportingChampionsThoughts}
+            <fieldset class="border-1 m-1 rounded p-1">
+                <legend class="font-bold">Best Supporting Champions thoughts</legend>
+                {@html champion.bestSupportingChampionsThoughts}
+            </fieldset>
+        {/if}
+        {#if champion.bestPassivePowersThoughts}
+            <fieldset class="border-1 m-1 rounded p-1">
+                <legend class="font-bold">Best Passive Powers thoughts</legend>
+                {@html champion.bestPassivePowersThoughts}
+            </fieldset>
+        {/if}
+        {#if champion.bestRelicsThoughts}
+            <fieldset class="border-1 m-1 rounded p-1">
+                <legend class="font-bold">Best Relics thoughts</legend>
+                {@html champion.bestRelicsThoughts}
+            </fieldset>
+        {/if}
+        {#if champion.bestItemsThoughts}
+            <fieldset class="border-1 m-1 rounded p-1">
+                <legend class="font-bold">Best Items thoughts</legend>
+                {@html champion.bestItemsThoughts}
+            </fieldset>
+        {/if}
+        {#if champion.bestChampionPassivesThoughts}
+            <fieldset class="border-1 m-1 rounded p-1">
+                <legend class="font-bold">Best Champion Passives thoughts</legend>
+                {@html champion.bestChampionPassivesThoughts}
+            </fieldset>
+        {/if}
+        {#if champion.deckEvaluation}
+            <fieldset class="border-1 m-1 rounded p-1">
+                <legend class="font-bold">Deck evaluation</legend>
+                {@html champion.deckEvaluation}
+            </fieldset>
+        {/if}
     </div>
 {/each}

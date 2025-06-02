@@ -52,6 +52,13 @@ interface Champion {
     starPower5?: string;
     starPower6?: string;
     cards: Card[];
+    generalThoughts?: string;
+    bestSupportingChampionsThoughts?: string;
+    bestPassivePowersThoughts?: string;
+    bestRelicsThoughts?: string;
+    bestItemsThoughts?: string;
+    bestChampionPassivesThoughts?: string;
+    deckEvaluation?: string;
 }
 
 export const load: PageLoad = async (event) => {
@@ -98,6 +105,13 @@ export const load: PageLoad = async (event) => {
             starPower4: transformCell(championsWorkSheet[`O${rowNumber}`]?.r),
             starPower5: transformCell(championsWorkSheet[`P${rowNumber}`]?.r),
             starPower6: transformCell(championsWorkSheet[`Q${rowNumber}`]?.r),
+            generalThoughts: transformCell(championsWorkSheet[`R${rowNumber}`]?.r),
+            bestSupportingChampionsThoughts: transformCell(championsWorkSheet[`S${rowNumber}`]?.r),
+            bestPassivePowersThoughts: transformCell(championsWorkSheet[`T${rowNumber}`]?.r),
+            bestRelicsThoughts: transformCell(championsWorkSheet[`U${rowNumber}`]?.r),
+            bestItemsThoughts: transformCell(championsWorkSheet[`V${rowNumber}`]?.r),
+            bestChampionPassivesThoughts: transformCell(championsWorkSheet[`W${rowNumber}`]?.r),
+            deckEvaluation: transformCell(championsWorkSheet[`X${rowNumber}`]?.r),
             cards: championCards
         })
     }

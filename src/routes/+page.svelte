@@ -10,22 +10,6 @@
     const items = data.items.sort((a, b) => a.name.localeCompare(b.name))
     const keywords = data.globals.keywords.filter(item => item.description.trim() && item.name !== 'Missing Translation').sort((a, b) => a.name.localeCompare(b.name))
     const vocabTerms = data.globals.vocabTerms.sort((a, b) => a.name.localeCompare(b.name))
-    
-    const renderRelics = (relics: Relics) => {
-        let html = "";
-
-        for (const relic of relics) {
-            html += 
-                `<div class="bg-gray-600 m-1 rounded p-1" id="${relic.relicCode}">
-                    <img src="${relic.assetFullAbsolutePath}" alt="${relic.name}" width="400"/>
-                    <h3 class="font-bold"><a href="${relic.relicCode}">${relic.name}</a></h3>
-                    <div class="flex items-center"><img src="https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${relic.rarityRef}_icon.png/100px-LoR_${relic.rarityRef}_icon.png" alt="${relic.rarity}" width="16" class="mr-1" />${relic.rarity}</div>
-                    <div><span>${transformDescription(relic.description, relic.name)}</span></div>
-                </div>`
-        }
-
-        return (html)
-    }
 </script>
 
 <div id="contents">
@@ -54,9 +38,32 @@
 <div id="relics">
     <h2 class="font-bold">Relics</h2>
     <div class="grid md:grid-cols-3">
-        {@html renderRelics(relics.filter(item => item.rarity === 'EPIC'))}
-        {@html renderRelics(relics.filter(item => item.rarity === 'RARE'))}
-        {@html renderRelics(relics.filter(item => item.rarity === 'COMMON'))}
+        {#each relics.filter(item => item.rarity === 'EPIC') as relic}
+            <div class="bg-gray-600 m-1 rounded p-1" id={relic.relicCode}>
+                <img src={relic.assetFullAbsolutePath} alt={relic.name} width="400"/>
+                <h3 class="font-bold"><a href={`#${relic.relicCode}`}>{relic.name}</a></h3>
+                <div class="flex items-center"><img src={`https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${relic.rarityRef}_icon.png/100px-LoR_${relic.rarityRef}_icon.png`} alt={relic.rarity} width="16" class="mr-1" />{relic.rarity}</div>
+                <div><span>{@html transformDescription(relic.description, relic.name)}</span></div>
+            </div>
+        {/each}
+
+        {#each relics.filter(item => item.rarity === 'RARE') as relic}
+            <div class="bg-gray-600 m-1 rounded p-1" id={relic.relicCode}>
+                <img src={relic.assetFullAbsolutePath} alt={relic.name} width="400"/>
+                <h3 class="font-bold"><a href={`#${relic.relicCode}`}>{relic.name}</a></h3>
+                <div class="flex items-center"><img src={`https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${relic.rarityRef}_icon.png/100px-LoR_${relic.rarityRef}_icon.png`} alt={relic.rarity} width="16" class="mr-1" />{relic.rarity}</div>
+                <div><span>{@html transformDescription(relic.description, relic.name)}</span></div>
+            </div>
+        {/each}
+
+        {#each relics.filter(item => item.rarity === 'COMMON') as relic}
+            <div class="bg-gray-600 m-1 rounded p-1" id={relic.relicCode}>
+                <img src={relic.assetFullAbsolutePath} alt={relic.name} width="400"/>
+                <h3 class="font-bold"><a href={`#${relic.relicCode}`}>{relic.name}</a></h3>
+                <div class="flex items-center"><img src={`https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${relic.rarityRef}_icon.png/100px-LoR_${relic.rarityRef}_icon.png`} alt={relic.rarity} width="16" class="mr-1" />{relic.rarity}</div>
+                <div><span>{@html transformDescription(relic.description, relic.name)}</span></div>
+            </div>
+        {/each}
     </div>
 </div>
 

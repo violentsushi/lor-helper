@@ -8,8 +8,21 @@
     const powers = data.powers.sort((a, b) => a.name.localeCompare(b.name))
     const relics = data.relics.sort((a, b) => a.name.localeCompare(b.name))
     const items = data.items.sort((a, b) => a.name.localeCompare(b.name))
-    const keywords = data.globals.keywords.filter(item => item.description.trim() && item.name !== 'Missing Translation').sort((a, b) => a.name.localeCompare(b.name))
+    const keywords = data.globals.keywords.filter(item => item.description.trim() && item.name !== 'Missing Translation')
     const vocabTerms = data.globals.vocabTerms.sort((a, b) => a.name.localeCompare(b.name))
+
+    // manually fix some keywords...
+    keywords.push({
+        name: "Can't Block",
+        nameRef: "Reckless",
+        description: "Units with Can't Block cannot be declared as blockers."
+    })
+    keywords.push({
+        name: "Deep",
+        nameRef: "Deep",
+        description: "You are Deep when your deck has 15 or fewer cards remaining. When that happens, units with the Deep keyword gain +3|+3."
+    })
+    keywords.sort((a, b) => a.name.localeCompare(b.name))
 </script>
 
 <div id="contents">

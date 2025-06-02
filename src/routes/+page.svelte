@@ -1,12 +1,29 @@
 <script lang="ts">
     import type { PageProps } from "./$types";
     import {transformDescription} from '$lib/utils'
+	import type { Relics } from "$lib/types";
 
     const { data }: PageProps = $props();
 
     const powers = data.powers.sort((a, b) => a.name.localeCompare(b.name))
     const relics = data.relics.sort((a, b) => a.name.localeCompare(b.name))
     const items = data.items.sort((a, b) => a.name.localeCompare(b.name))
+
+    const renderRelics = (relics: Relics) => {
+        let html = "";
+
+        for (const relic of relics) {
+            html += 
+                `<div class="bg-gray-600 m-1 rounded p-1" id="${relic.relicCode}">
+                    <img src="${relic.assetFullAbsolutePath}" alt="${relic.name}" width="400"/>
+                    <h3 class="font-bold"><a href="${relic.relicCode}">${relic.name}</a></h3>
+                    <div class="flex items-center"><img src="https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${relic.rarityRef}_icon.png/100px-LoR_${relic.rarityRef}_icon.png" alt="${relic.rarity}" width="16" class="mr-1" />${relic.rarity}</div>
+                    <div><span>${transformDescription(relic.description, relic.name)}</span></div>
+                </div>`
+        }
+
+        return (html)
+    }
 </script>
 
 <div id="contents">
@@ -33,14 +50,9 @@
 <div id="relics">
     <h2 class="font-bold">Relics</h2>
     <div class="grid md:grid-cols-3">
-        {#each relics as relic}
-            <div class="bg-gray-600 m-1 rounded p-1" id={relic.relicCode}>
-                <img src={relic.assetFullAbsolutePath} alt={relic.name} width="400"/>
-                <h3 class="font-bold"><a href={`#${relic.relicCode}`}>{relic.name}</a></h3>
-                <div class="flex items-center"><img src={`https://wiki.leagueoflegends.com/en-us/images/thumb/LoR_${relic.rarityRef}_icon.png/100px-LoR_${relic.rarityRef}_icon.png`} alt={relic.rarity} width="16" class="mr-1" />{relic.rarity}</div>
-                <div><span>{@html transformDescription(relic.description, relic.name)}</span></div>
-            </div>
-        {/each}
+        {@html renderRelics(relics.filter(item => item.rarity === 'EPIC'))}
+        {@html renderRelics(relics.filter(item => item.rarity === 'RARE'))}
+        {@html renderRelics(relics.filter(item => item.rarity === 'COMMON'))}
     </div>
 </div>
 

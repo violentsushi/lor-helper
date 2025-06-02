@@ -12,5 +12,5 @@
 }
 
 .vocab, .keyword {
-	color: #e9c755;
+	color: var(--color-yellow-200)
 }

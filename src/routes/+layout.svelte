@@ -16,4 +16,4 @@
     {@render children()}
 </div>
 
-<a href="#top" class="fixed bottom-6 right-6 bg-blue-500 text-white p-4 cursor-pointer z-50 rounded hover:bg-blue-700">Top</a>
+<a href="#top" class="fixed bottom-6 right-6 bg-gray-100 text-white p-4 cursor-pointer z-50 rounded-full border-1 hover:bg-gray-300">🔝</a>

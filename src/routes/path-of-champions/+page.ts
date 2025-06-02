@@ -4,36 +4,36 @@ import xlsx from 'xlsx'
 import championAssocations from '$lib/data/path-of-champions.json'
 import type { Card } from '$lib/types';
 
-interface SupportingChampion {
-    name: string;
-    tier: string;
-    note: boolean;
-    starPowerRequirements: number[]
-}
+// interface SupportingChampion {
+//     name: string;
+//     tier: string;
+//     note: boolean;
+//     starPowerRequirements: number[]
+// }
 
-interface PassivePower {
-    name: string;
-    tier: string;
-    note: boolean;
-    starPowerRequirements: number[]
-    rarity?: string;
-}
+// interface PassivePower {
+//     name: string;
+//     tier: string;
+//     note: boolean;
+//     starPowerRequirements: number[]
+//     rarity?: string;
+// }
 
-interface Relic {
-    name: string;
-    tier: string;
-    note: boolean;
-    starPowerRequirements: number[]
-    rarity: string;
-}
+// interface Relic {
+//     name: string;
+//     tier: string;
+//     note: boolean;
+//     starPowerRequirements: number[]
+//     rarity: string;
+// }
 
-interface Item {
-    name: string;
-    tier: string;
-    note: boolean;
-    starPowerRequirements: number[]
-    rarity: string;
-}
+// interface Item {
+//     name: string;
+//     tier: string;
+//     note: boolean;
+//     starPowerRequirements: number[]
+//     rarity: string;
+// }
 
 interface Champion {
     name: string;
@@ -62,7 +62,7 @@ interface Champion {
 }
 
 export const load: PageLoad = async (event) => {
-    const {globals, items, powers, relics, cards} = await downloadDataDragon(event.fetch);
+    const {cards} = await downloadDataDragon(event.fetch);
 
     const data = await event.fetch("https://docs.google.com/spreadsheets/d/1FePMz4o3tbiWcz0nHZYu0aAHknbIfb9anWfQCVtvtKk/export?format=xlsx&gid=1877830190").then(response => response.arrayBuffer())
     

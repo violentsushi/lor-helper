@@ -3,22 +3,24 @@ import sets from '$lib/data/sets.json'
 import { XMLParser } from "fast-xml-parser";
 
 export const transformDescription = (description: string, name?: string) => 
-    description.replaceAll(/<link=([A-Za-z.]+?)>(<sprite name=(\w+)>)?<style=(\w+)>([A-Za-z0-9:' ]+)<\/style><\/link>/g,
-        (_substring, link: string, spriteSection: string | undefined, spriteName: string | undefined, style: string, text: string) => {
-            if (text === 'CardRef') {
-                style = 'AssociatedCard'
-                switch(name) {
-                    case "Absolution":
-                        text = "Warlord's Hoard";
-                        break;
-                    case "The Time Keeper":
-                        text = "The Vault";
-                        break;
-                    default:
-                        break;
-                }
+    description.replaceAll(/<style=Variable>(\w+)<\/style>/g, (_substring, text: string) => {
+        // manually fix some text
+        if (text === 'CardRef') {
+            switch(name) {
+                case "Absolution":
+                    text = "Warlord's Hoard";
+                    break;
+                case "The Time Keeper":
+                    text = "The Vault";
+                    break;
+                default:
+                    break;
             }
-
+        }
+        
+        return `<a href="https://wiki.leagueoflegends.com/en-us/LoR:${text.replaceAll(" ", "_")}" class="underline" target="_blank">${text}</a>`;
+    }).replaceAll(/<link=([A-Za-z.]+?)>(<sprite name=(\w+)>)?<style=(\w+)>([A-Za-z0-9:' ]+)<\/style><\/link>/g,
+        (_substring, link: string, spriteSection: string | undefined, spriteName: string | undefined, style: string, text: string) => {
             let card = text;
             switch (text) {
                 case "Coastal Defenders":

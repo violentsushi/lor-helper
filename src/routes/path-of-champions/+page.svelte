@@ -21,7 +21,7 @@
 <div class="bg-gray-300 m-1 rounded p-1" id={champion.name}>
     <div style="width: 200px;">
         <a href={`https://wiki.leagueoflegends.com/en-us/LoR:${champion.name.replaceAll(' ', '_')}#The_Path_of_Champions`} target="_blank">
-            <img src={champion.cards[0].assets[0].gameAbsolutePath} alt={`${champion.cards[0].name} card`} width="200" />
+            <img src={champion.cards[0]?.assets[0].gameAbsolutePath} alt={`${champion.cards[0]?.name} card`} width="200" />
         </a>
     </div>
     <!-- {#each champion.cards as card}
@@ -57,8 +57,17 @@
         </div>
 
         <div class="md:border-b-0 border-b-1">
-            <p class="font-bold underline">Best Passive Powers</p>
-            {@html champion.bestPassivePowers}
+            <div>
+                <p class="font-bold underline">Best Passive Powers</p>
+                {@html champion.bestPassivePowers}
+            </div>
+
+            {#if champion.bestLegendsOfArcaneReturnPowers}    
+            <div class="mt-4">
+                <p class="font-bold underline">Best Legends of Arcane Return Powers</p>
+                {@html champion.bestLegendsOfArcaneReturnPowers}
+            </div>
+            {/if}
         </div>
 
         <div class="md:border-b-0 border-b-1">

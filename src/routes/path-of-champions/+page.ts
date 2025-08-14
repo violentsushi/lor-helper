@@ -45,6 +45,7 @@ interface Champion {
     bestPassivePowers: string;
     bestLegendsOfArcaneReturnPowers: string;
     bestRelics: string;
+    bestRunes: string;
     bestItems: string;
     starPower1: string;
     starPower2: string;
@@ -78,7 +79,7 @@ export const load: PageLoad = async (event) => {
     for (const rowNumber of rowNumbers) {
         // skip the header row
         // skip if no star_power_1, meaning that row is not a champion
-        if (rowNumber === '1' || championsWorkSheet[`M${rowNumber}`] === undefined) {
+        if (rowNumber === '1' || championsWorkSheet[`N${rowNumber}`] === undefined) {
             continue;
         }
 
@@ -107,20 +108,21 @@ export const load: PageLoad = async (event) => {
             bestPassivePowers: transformCell(championsWorkSheet[`I${rowNumber}`]?.r),
             bestLegendsOfArcaneReturnPowers: transformCell(championsWorkSheet[`J${rowNumber}`]?.r),
             bestRelics: transformCell(championsWorkSheet[`K${rowNumber}`]?.r),
-            bestItems: transformCell(championsWorkSheet[`L${rowNumber}`]?.r),
-            starPower1: transformCell(championsWorkSheet[`M${rowNumber}`]?.r),
-            starPower2: transformCell(championsWorkSheet[`N${rowNumber}`]?.r),
-            starPower3: transformCell(championsWorkSheet[`O${rowNumber}`]?.r),
-            starPower4: transformCell(championsWorkSheet[`P${rowNumber}`]?.r),
-            starPower5: transformCell(championsWorkSheet[`Q${rowNumber}`]?.r),
-            starPower6: transformCell(championsWorkSheet[`R${rowNumber}`]?.r),
-            generalThoughts: transformCell(championsWorkSheet[`S${rowNumber}`]?.r),
-            bestSupportingChampionsThoughts: transformCell(championsWorkSheet[`T${rowNumber}`]?.r),
-            bestPassivePowersThoughts: transformCell(championsWorkSheet[`U${rowNumber}`]?.r),
-            bestRelicsThoughts: transformCell(championsWorkSheet[`V${rowNumber}`]?.r),
-            bestItemsThoughts: transformCell(championsWorkSheet[`W${rowNumber}`]?.r),
-            bestChampionPassivesThoughts: transformCell(championsWorkSheet[`X${rowNumber}`]?.r),
-            deckEvaluation: transformCell(championsWorkSheet[`Y${rowNumber}`]?.r),
+            bestRunes: transformCell(championsWorkSheet[`L${rowNumber}`]?.r),
+            bestItems: transformCell(championsWorkSheet[`M${rowNumber}`]?.r),
+            starPower1: transformCell(championsWorkSheet[`N${rowNumber}`]?.r),
+            starPower2: transformCell(championsWorkSheet[`O${rowNumber}`]?.r),
+            starPower3: transformCell(championsWorkSheet[`P${rowNumber}`]?.r),
+            starPower4: transformCell(championsWorkSheet[`Q${rowNumber}`]?.r),
+            starPower5: transformCell(championsWorkSheet[`R${rowNumber}`]?.r),
+            starPower6: transformCell(championsWorkSheet[`S${rowNumber}`]?.r),
+            generalThoughts: transformCell(championsWorkSheet[`T${rowNumber}`]?.r),
+            bestSupportingChampionsThoughts: transformCell(championsWorkSheet[`U${rowNumber}`]?.r),
+            bestPassivePowersThoughts: transformCell(championsWorkSheet[`V${rowNumber}`]?.r),
+            bestRelicsThoughts: transformCell(championsWorkSheet[`W${rowNumber}`]?.r),
+            bestItemsThoughts: transformCell(championsWorkSheet[`X${rowNumber}`]?.r),
+            bestChampionPassivesThoughts: transformCell(championsWorkSheet[`Y${rowNumber}`]?.r),
+            deckEvaluation: transformCell(championsWorkSheet[`Z${rowNumber}`]?.r),
             cards: championCards
         })
     }

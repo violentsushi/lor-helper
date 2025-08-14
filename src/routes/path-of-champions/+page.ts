@@ -83,7 +83,7 @@ export const load: PageLoad = async (event) => {
             continue;
         }
 
-        const championName: string = championsWorkSheet[`A${rowNumber}`]?.v;
+        const championName: string = championsWorkSheet[`A${rowNumber}`]?.v.trim();
         const championAssocation = championAssocations.find(item => item.name.toLowerCase() === championName.toLowerCase());
         const championCards: Card[] = [];
         const championCard = cards.find(item => item.cardCode === championAssocation?.cardCode);
